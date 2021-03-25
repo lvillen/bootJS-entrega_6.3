@@ -54,11 +54,9 @@ showingSchedule(myTeam);
 
 // Parte 2: Buscar el hueco libre
 
-// Para buscar el primer hueco libre 
-// habrá que comprobar la primera franja horaria en la que 
-// todos los miembros del equipo están disponibles.
-
 var meeting = (team) => {
+    var thereIsMeeting = false;
+
     for (i in WORK_HOURS) {
         var n = 0;
         var teamMember = team[n];
@@ -68,24 +66,14 @@ var meeting = (team) => {
             teamMember = team[n];
             if (n === team.length) {
                 console.log("Hueco encontrado en el horario " + WORK_HOURS[i]);
+                thereIsMeeting = true;
             }
         }
-
-
     }
 
-    // Comprobar por hora: 
-        // 0: No
-        // 1: Sí, Sí, No
-        // 2: Sí, No
-        // 3: Sí, Sí, Sí, No
-        // 4: Sí, No
-        // 5: Sí, No
-        // 6: No
-        // 7: No
-
-    // Print "Lo siento, no hay hueco en el equipo"
-
+    if (thereIsMeeting === false) {
+        console.log("Lo siento, no hemos encontrado hueco disponible");
+    }
 }
 
 meeting(myTeam);
