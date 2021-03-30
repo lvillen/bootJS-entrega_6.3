@@ -33,20 +33,27 @@ var difference = 48;
 //     return result;
 // }
 
-console.log(difference);
-
 var calculateChange = (arr, difference) => {
     var result = [];
     var updatedDifference = difference;
 
+    
     while (updatedDifference >= 0) {
         for (coin of arr) {
             if (coin <= updatedDifference) {
-                updatedDifference = updatedDifference - coin 
-                result.push(coin);
+                var divisionResult = Math.floor(updatedDifference / coin);
+                console.log(updatedDifference);
+                updatedDifference = updatedDifference - (coin * divisionResult);
+                console.log(updatedDifference);
+                for (var i = 0; i < divisionResult; i++) {
+                    result.push(coin);
+                }
+                console.log(result)
             }
         }
-    }    
+    }
+
+    // } while (updatedDifference !== 0);
 
     return result;
 }
